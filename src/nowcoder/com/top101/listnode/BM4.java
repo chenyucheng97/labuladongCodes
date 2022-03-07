@@ -18,60 +18,46 @@ public class BM4 {
 
         int[] array2 = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
         ListNode head2 = ListNodeUtil.createLinkedList(array2);
-        ListNode result = Merge(head, head2);
-//        ListNode result = mergeTwoList(head, head2);
+//        ListNode result = Merge(head, head2);
+        ListNode result = mergeTwoList(head, head2);
         ListNodeUtil.printLinkedList(result);
-
     }
 
-
+    /**
+     * 使用双指针，不修改原链表
+     * @param a
+     * @param b
+     * @return
+     */
     private static ListNode mergeTwoList(ListNode a, ListNode b) {
-
-        if (a == null) {
-            return b;
-        }
-        if (b == null) {
-            return a;
-        }
         ListNode p1 = a, p2 = b;
         ListNode dummyNode = new ListNode(-1);
         ListNode p = dummyNode;
         while (p1 != null && p2 != null) {
-
-            if (p1.val > p2.val) {
+            if (p1.val >= p2.val) {
                 p.next = p2;
                 p2 = p2.next;
-                p = p.next;
             } else if (p1.val < p2.val) {
                 p.next = p1;
                 p1 = p1.next;
-                p = p.next;
-            } else {
-                p.next = new ListNode(p1.val);
-                p = p.next;
-                p.next = new ListNode(p1.val);
-                p = p.next;
-                p1 = p1.next;
-                p2 = p2.next;
             }
-
+            p = p.next;
         }
-
-        while (p1 != null) {
+        if (p1 != null) {
             p.next = p1;
-            p1 = p1.next;
-            p = p.next;
         }
-        while (p2 != null) {
+        if (p2 != null) {
             p.next = p2;
-            p2 = p2.next;
-            p = p.next;
         }
         return dummyNode.next;
     }
 
-
-
+    /**
+     * 直接将输入链表节点当作双指针
+     * @param list1
+     * @param list2
+     * @return
+     */
     public static ListNode Merge(ListNode list1,ListNode list2) {
         ListNode h = new ListNode(-1);
         ListNode cur = h;
