@@ -1,6 +1,7 @@
 package nowcoder.com.top101.listnode;
 
 import nowcoder.com.top101.ListNode;
+import nowcoder.com.top101.ListNodeUtil;
 
 /**
  * @author cyc
@@ -10,7 +11,36 @@ import nowcoder.com.top101.ListNode;
  */
 public class BM6 {
 
-    public boolean hasCycle(ListNode head) {
+    public static void main(String[] args) {
+        int[] array = new int[]{1, 2, 3, 4, 5};
+        ListNode head = ListNodeUtil.createLinkedList(array);
 
+        boolean res2 = hasCycle(head);
+        System.out.println("res2 = " + res2);
+
+        ListNode pre1 = new ListNode(1);
+        ListNode pre2 = new ListNode(2);
+        pre1.next = head;
+        head.next = pre2;
+        pre2.next = head;
+        boolean res = hasCycle(pre1);
+        System.out.println("res = " + res);
+
+    }
+
+    public static boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
     }
 }
