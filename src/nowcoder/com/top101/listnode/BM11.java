@@ -14,7 +14,7 @@ public class BM11 {
 
 
     public static void main(String[] args) {
-        int[] array = new int[]{9,  3, 7};
+        int[] array = new int[]{1,9,  3, 7};
         ListNode head = ListNodeUtil.createLinkedList(array);
 
         int[] array2 = new int[]{6, 3};
@@ -22,6 +22,7 @@ public class BM11 {
 
         ListNode res = mergeTwoList(head, head2);
         ListNodeUtil.printLinkedList(res);
+
     }
 
     public static ListNode mergeTwoList(ListNode head1, ListNode head2) {
