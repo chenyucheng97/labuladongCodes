@@ -38,4 +38,14 @@ public class ListNodeUtil {
         printLinkedList(head);
     }
 
+    /**
+     * 用于递归函数打印每次调用时的空格，显示递归树
+     * @param n 递归次数
+     */
+    public static void printIndent(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.printf("   ");
+        }
+    }
+
 }
