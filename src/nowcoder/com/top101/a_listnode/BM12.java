@@ -1,9 +1,8 @@
-package nowcoder.com.top101.listnode;
+package nowcoder.com.top101.a_listnode;
 
 import nowcoder.com.top101.ListNode;
 import nowcoder.com.top101.ListNodeUtil;
 
-import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
